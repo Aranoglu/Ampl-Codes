@@ -1,0 +1,75 @@
+data;
+set recoveries :=  1 2 3 4 5 6 7 8 9 10  ; #Set of indices that enumerate payback percentages which can be offered by the processing facility
+
+set time := 1 2 3 4 5 6 7 8 9 10 11 12  ; #Set of time periods (i.e., months)
+
+
+
+param r :=     #The ith payback percentage value
+1 0.25
+2 0.26
+3 0.27
+4 0.28
+5 0.29
+6 0.30
+7 0.31
+8 0.32
+9 0.33
+10 0.34
+;
+
+
+param rm := 0.25 ; #Minimum of all payback percentage values 
+
+param b:=       #The initial amount of ROM sold to the facility when ith payback percentage (ri) is offered by the facility for the first time [ton]
+1 16464
+2 20760
+3 26400
+4 33600
+5 43680
+6 58320
+7 78240
+8 96480
+9 112560
+10 126960
+;
+
+param d:=      #The monthly increase in ROM sold to the facility when ith payback percentage (ri) is offered by the facility [ton]
+1 1056
+2 2040
+3 3840
+4 7104
+5 13920
+6 32232
+7 68328
+8 89472
+9 112968
+10 129264
+;
+
+
+
+param m := 221760;    #Maximum capacity of the total monthly ROM production [ton]
+param p :=58.8;      #Average gold price $/g
+param s :=0.85;      #The reduction percentage in gold price when the miner sells their locally produced ROM directly 
+param l  :=0.3;       #The miner’s cost of extracting the ROM and locally processing it [$/ton]
+param f  :=0.7;       #The miner’s cost of extracting the ROM, selling and transporting it to the facility [$/ton]
+#param g :=0.30;     #Fixed gold recovery percentage of ROM, if it is locally processed
+param v := 0.1;        #Grade of gold in one ton of ROM [gram/ton]
+
+
+param g :=          #Fixed gold recovery percentage of ROM, if it is locally processed
+
+1  0.3
+ 2  0.3
+ 3  0.3
+ 4  0.3
+ 5  0.3
+ 6  0.3
+ 7  0.3
+ 8  0.3
+ 9  0.3
+10  0.3
+11  0.3
+12  0.3;
+

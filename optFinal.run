@@ -1,0 +1,53 @@
+reset;
+
+
+# grab model file
+model optFinal.mod;
+
+#grab data file
+data optFinal.dat;
+
+
+#'objscale=5.35e8'
+# chose solver
+#'objscale=1.0e9'
+#'objscale=5.369e8'
+#'objscale=6.7101e7' for the original
+#'objscale=5e7' works for most of them
+#'objscale=3e7'
+#objscale 9.7101e7 for original
+#3.3554432e8
+option solver gurobi;
+
+option gurobi_options 'outlev 1 timelim 3600 branchdir 1 IntegralityFocus 1 objscale 6.3554432e7 method 0 round 2' ;
+
+option log_file'optFinal.txt';
+
+
+# solve problem
+solve;
+
+#display results
+display Profit ;
+
+display  Y  ;
+#display    G ;
+display   R ;
+display   F ;
+display   Z ;
+display   B ;
+#display   Q ;
+display   A ;
+display   X ;
+display   D ;
+param L{time};
+for {t in time}
+let L[t] := m - (sum {j in 1 .. t} Y[j] - sum {q in 1 .. t} X[q]);
+display L;
+display m;
+display s;
+display l;
+display f;
+display p;
+display g;
+display _total_solve_elapsed_time;
